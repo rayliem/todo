@@ -1,22 +1,12 @@
 package com.todo.api.application.requests;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class UpdateToDoRequest {
+    @Getter@Setter
     int toDoId;
+    @Getter@Setter
     boolean status;
 
-    public int getToDoId() {
-        return toDoId;
-    }
-
-    public void setToDoId(int toDoId) {
-        this.toDoId = toDoId;
-    }
-
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 }

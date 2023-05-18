@@ -30,7 +30,7 @@ public class AddToDoService implements IAddToDoService {
         }
         ToDo newTodo = new ToDo();
         newTodo.setBody(addToDoRequest.getBody());
-        newTodo.setDone(false);
+        newTodo.setIsDone(false);
         newTodo.setTitle(addToDoRequest.getTitle());
         newTodo.setCreatedOn(new java.util.Date().toString());
         var response = addToDoRepository.addToDo(newTodo);

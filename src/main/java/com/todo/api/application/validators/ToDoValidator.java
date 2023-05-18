@@ -17,18 +17,17 @@ public class ToDoValidator implements Validator {
                 ((AddToDoRequest) target).getTitle().isBlank()) {
             errors.rejectValue("title", "title must be provided");
         }
-        //ValidationUtils.rejectIfEmptyOrWhitespace(errors, "professionRequest.Profession", "professionRequest.Profession.required");
         if (((AddToDoRequest) target).getBody() ==null ||
                 ((AddToDoRequest) target).getBody().isBlank()) {
-            errors.rejectValue("body", "professionDescription must be provided");
+            errors.rejectValue("body", "body must be provided");
         }
 
         if (((AddToDoRequest) target).getTitle().length() >= 30 ) {
-            errors.rejectValue("title", "professionDescription must be 75 chars or lower");
+            errors.rejectValue("title", "title must be 75 chars or lower");
         }
 
         if (((AddToDoRequest) target).getBody().length() >= 250 ){
-            errors.rejectValue("body", "professionDescription must be 75 chars or lower");
+            errors.rejectValue("body", "body must be 75 chars or lower");
         }
     }
 }

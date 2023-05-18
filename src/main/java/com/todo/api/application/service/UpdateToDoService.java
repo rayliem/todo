@@ -41,7 +41,7 @@ public class UpdateToDoService implements IUpdateToDoService {
 
         //Update the item
         item.setUpdatedOn(new java.util.Date().toString());
-        item.setDone(updateToDoRequest.getStatus());
+        item.setIsDone(updateToDoRequest.isStatus());
 
         var addToDoResult = updateToDoRepository.updateToDo(item);
         var updatedResponse = new UpdateToDoResponse();

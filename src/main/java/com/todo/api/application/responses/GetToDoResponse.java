@@ -1,17 +1,12 @@
 package com.todo.api.application.responses;
 
 import com.todo.api.domain.models.ToDo;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 public class GetToDoResponse {
+    @Getter@Setter
     private List<ToDo> todos;
-
-    public List<ToDo> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(List<ToDo> todos) {
-        this.todos = todos;
-    }
 }

@@ -1,12 +1,9 @@
 package com.todo.api.application.requests;
 
-public class GetToDoRequest {
-    private int todoId;
-    public int getTodoId() {
-        return todoId;
-    }
+import lombok.Getter;
+import lombok.Setter;
 
-    public void setTodoId(int todoId) {
-        this.todoId = todoId;
-    }
+public class GetToDoRequest {
+    @Getter@Setter
+    private int todoId;
 }

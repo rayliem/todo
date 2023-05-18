@@ -27,7 +27,7 @@ public class DeleteToDoRepository implements IDeleteToDoRepository {
         Transaction tx = session.beginTransaction();
         try {
             //Delete current record with new data.
-            session.delete(toDo);
+            session.remove(toDo);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) tx.rollback();

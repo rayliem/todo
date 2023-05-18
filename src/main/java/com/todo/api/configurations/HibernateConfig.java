@@ -82,6 +82,8 @@ public class HibernateConfig {
         properties.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
         properties.put("current_session_context_class", //
                 env.getProperty("spring.jpa.properties.hibernate.current_session_context_class"));
+        properties.put("hibernate.hbm2ddl.auto", //
+                env.getProperty("spring.jpa.hibernate.ddl-auto"));
         // Fix Postgres JPA Error:
         // Method org.postgresql.jdbc.PgConnection.createClob() is not yet implemented.
         // properties.put("hibernate.temp.use_jdbc_metadata_defaults",false);

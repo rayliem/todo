@@ -28,7 +28,7 @@ public class UpdateToDoRepository implements IUpdateToDoRepository {
         ToDo updatedToDo =null;
         try {
             //Update current record with new data.
-            session.update(toDo);
+            session.merge(toDo);
             //Get freshly updated record from database to confirm change.
             updatedToDo = session.get(ToDo.class, recordId);
             tx.commit();
