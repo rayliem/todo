@@ -1,0 +1,5 @@
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+    CREATE USER springbootuser WITH ENCRYPTED PASSWORD 'test1234';
+    CREATE DATABASE ToDoDb;
+    GRANT ALL PRIVILEGES ON DATABASE ToDoDb TO springbootuser;
+EOSQL

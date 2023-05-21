@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  API:
+    image: 'todo-api-01.jar'
+    ports:
+      - "8080:8080"
+    depends_on:
+      PostgreSQL:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/ToDoDb
+      - SPRING_DATASOURCE_USERNAME=springbootuser
+      - SPRING_DATASOURCE_PASSWORD=test1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  PostgreSQL:
+    image: postgres:15.3
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=test1234
+      - POSTGRES_USER=springbootuser
+      - POSTGRES_DB=ToDoDb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U springbootuser"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
