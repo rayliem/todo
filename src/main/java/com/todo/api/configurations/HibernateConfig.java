@@ -40,15 +40,8 @@ public class HibernateConfig {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 
-		Properties jpaProps = new Properties();
-		String ddlAuto = env.getProperty("spring.jpa.hibernate.ddl-auto");
-		if (ddlAuto != null) jpaProps.put("hibernate.hbm2ddl.auto", ddlAuto);
-		String showSql = env.getProperty("spring.jpa.show-sql");
-		if (showSql != null) jpaProps.put("hibernate.show_sql", showSql);
-		String dialect = env.getProperty("spring.jpa.properties.hibernate.dialect");
-		if (dialect != null) jpaProps.put("hibernate.dialect", dialect);
-
-		em.setJpaProperties(jpaProps);
+		// Rely on Spring Boot / Hibernate auto-configuration for dialect and ddl-auto.
+		// Keep this bean minimal to avoid setting deprecated/implementation-specific properties.
 
 		return em;
 	}
