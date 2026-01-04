@@ -76,6 +76,14 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Enable inline mock maker via mockito-inline to avoid self-attaching warnings -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<version>5.20.0</version>
+			<scope>test</scope>
+		</dependency>
+
 
 
 	</dependencies>
