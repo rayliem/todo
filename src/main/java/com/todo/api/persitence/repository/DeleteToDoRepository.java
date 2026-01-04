@@ -2,36 +2,21 @@ package com.todo.api.persitence.repository;
 
 import com.todo.api.domain.models.ToDo;
 import com.todo.api.persitence.repository.Interface.IDeleteToDoRepository;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class DeleteToDoRepository implements IDeleteToDoRepository {
-    @Autowired
-    private SessionFactory sessionFactory;
-    @Override
-    public void deleteToDoFromTable(ToDo toDo) {
-        Session session;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-        try {
-            session = sessionFactory.getCurrentSession();
-        } catch (HibernateException e) {
-            session = sessionFactory.openSession();
-        }
-        //Merge object to current session, as the object comes from another session
-        //session.merge(toDo);
-        Transaction tx = session.beginTransaction();
-        try {
-            //Delete current record with new data.
-            session.remove(toDo);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            throw e;
-        }
+    @Override
+    @Transactional
+    public void deleteToDoFromTable(ToDo toDo) {
+        // Ensure managed instance before removal
+        ToDo managed = entityManager.contains(toDo) ? toDo : entityManager.merge(toDo);
+        entityManager.remove(managed);
     }
 }

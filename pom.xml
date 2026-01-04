@@ -85,6 +85,20 @@
 	<build>
 		<finalName>todo-api-01</finalName>
 		<plugins>
+			<!-- OpenRewrite plugin to run code-modding recipes during migration -->
+			<plugin>
+				<groupId>org.openrewrite</groupId>
+				<artifactId>rewrite-maven-plugin</artifactId>
+				<version>4.30.0</version>
+				<configuration>
+					<activeRecipes>
+						<recipe>org.openrewrite.java.migrate.UpgradeToJava21</recipe>
+					</activeRecipes>
+					<recipeArtifacts>
+						<recipeArtifact>org.openrewrite.recipe:rewrite-migrate-java:2.31.1</recipeArtifact>
+					</recipeArtifacts>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
